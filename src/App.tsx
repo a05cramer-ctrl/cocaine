@@ -69,6 +69,19 @@ function TypewriterSection() {
 
 function App() {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const [copied, setCopied] = useState(false)
+  
+  const contractAddress = '7SK5Q1tdBVeCpZXJ9YtQdgVCoxeUeH6yHJGwj9nepump'
+  
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(contractAddress)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch (err) {
+      console.error('Failed to copy:', err)
+    }
+  }
 
   useEffect(() => {
     const video = videoRef.current
@@ -185,7 +198,12 @@ function App() {
       </div>
       
       <footer className="footer">
-        <div className="footer-text">Ca:</div>
+        <div className="footer-text">
+          CA: <span className="contract-address" onClick={copyToClipboard} title="Click to copy">
+            {contractAddress}
+            {copied && <span className="copied-message"> ✓ Copied!</span>}
+          </span>
+        </div>
       </footer>
     </div>
   )
