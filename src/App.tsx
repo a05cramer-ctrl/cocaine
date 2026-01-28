@@ -71,7 +71,7 @@ function App() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [copied, setCopied] = useState(false)
   
-  const contractAddress = 'JCgmvkH9wgHGegF8xiGQtrDqXfLxg71MefQ5aF2Xpump'
+  const contractAddress = 'FZoWiTbvhs33LTHwnhcfn6G4PyEQ8geSFCucSeXZbonk'
   
   const copyToClipboard = async () => {
     try {
